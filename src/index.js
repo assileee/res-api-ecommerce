@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const userRoutes = require("./routes/users")
 const connectDB=require("./utils/db.js")
+const path = require("path")
 
 // MIDDLEWARE
 app.use(express.json())
@@ -33,6 +34,8 @@ app.get("/", (req, res) => {
     res.send("Welcome to my API ! e-commerce backed 🤳")
    })
 
+// image folder
+app.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
